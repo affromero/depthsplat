@@ -3,16 +3,18 @@ from torch.utils.data import Dataset
 from ..misc.step_tracker import StepTracker
 from .dataset_re10k import DatasetRE10k, DatasetRE10kCfg
 from .dataset_dl3dv import DatasetDL3DV, DatasetDL3DVCfg
+from .dataset_nerfstudio import DatasetNerfstudio, DatasetNerfstudioCfg
 from .types import Stage
 from .view_sampler import get_view_sampler
 
 DATASETS: dict[str, Dataset] = {
     "re10k": DatasetRE10k,
     "dl3dv": DatasetDL3DV,
+    "nerfstudio": DatasetNerfstudio,
 }
 
 
-DatasetCfg = DatasetRE10kCfg | DatasetDL3DVCfg
+DatasetCfg = DatasetRE10kCfg | DatasetDL3DVCfg | DatasetNerfstudioCfg
 
 
 def get_dataset(

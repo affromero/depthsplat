@@ -1,0 +1,13 @@
+python -m src.main +experiment=nerfstudio \
+data_loader.train.batch_size=8 \
+dataset.test_chunk_interval=10 \
+dataset.image_shape=[256,448] \
+trainer.max_steps=150000 \
+trainer.num_nodes=8 \
+model.encoder.num_scales=2 \
+model.encoder.upsample_factor=4 \
+model.encoder.lowest_feature_resolution=8 \
+model.encoder.monodepth_vit_type=vitb \
+checkpointing.pretrained_monodepth=pretrained/depth_anything_v2_vitb.pth \
+checkpointing.pretrained_mvdepth=pretrained/gmflow-scale1-things-e9887eda.pth \
+output_dir=checkpoints/nerfstudio-256x448-depthsplat-base

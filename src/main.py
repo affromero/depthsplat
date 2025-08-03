@@ -57,6 +57,8 @@ def train(cfg_dict: DictConfig):
                 eval_path = "assets/dl3dv_start_0_distance_50_ctx_6v_tgt_8v.json"
             else:
                 raise ValueError("unsupported number of views for dl3dv")
+        elif "nerfstudio" in dataset_dir:
+            eval_path = "dependencies/depthsplat/assets/dl3dv_start_0_distance_10_ctx_2v_tgt_4v.json" # ????
         else:
             raise Exception("Fail to load eval index path")
         eval_cfg_dict["dataset"]["view_sampler"] = {
